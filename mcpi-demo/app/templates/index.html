@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>MCPI Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css" />
+</head>
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>MCPI Demo</h1>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="card">
+            <h2>Monte Carlo π Estimation</h2>
+            <p>Run multiple background tasks and aggregate the estimate.</p>
+            <form id="piForm">
+                <div class="grid-3">
+                    <div>
+                        <label for="samples">Total samples</label>
+                        <input id="samples" name="samples" type="number" min="1000" step="1000" value="1000000" />
+                    </div>
+                    <div>
+                        <label for="tasks">Number of tasks</label>
+                        <input id="tasks" name="tasks" type="number" min="1" step="1" value="4" />
+                    </div>
+                    <div>
+                        <label for="digits">Display digits</label>
+                        <input id="digits" name="digits" type="number" min="1" max="15" step="1" value="6" />
+                    </div>
+                </div>
+                <div style="margin-top:12px">
+                    <button id="startPi" class="button" type="submit">Start</button>
+                </div>
+            </form>
+
+            <div id="batchStatus" class="muted" style="margin-top: 8px;"></div>
+
+            <div class="results">
+                <div class="metric">
+                    <div class="label">Estimated π</div>
+                    <div id="m_estimate" class="value">—</div>
+                </div>
+                <div class="metric">
+                    <div class="label">Actual π</div>
+                    <div id="m_actual" class="value">—</div>
+                </div>
+                <div class="metric">
+                    <div class="label">Difference</div>
+                    <div id="m_diff" class="value">—</div>
+                </div>
+                <div class="metric">
+                    <div class="label">Iterations</div>
+                    <div id="m_iters" class="value">—</div>
+                </div>
+                <div class="metric">
+                    <div class="label">Elapsed</div>
+                    <div id="m_elapsed" class="value">—</div>
+                </div>
+                <div class="metric">
+                    <div class="label">Completed</div>
+                    <div id="m_completed" class="value">0</div>
+                </div>
+            </div>
+
+            <div class="table-wrap">
+                <table class="table" aria-label="Task results">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Task ID</th>
+                            <th>π estimate</th>
+                            <th>Samples</th>
+                            <th>Error</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <small>© <span id="year"></span> MCPI Demo</small>
+        </div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+</body>
+<!-- Keep markup lean; styles and behavior live in static assets. -->
+</html>
+
