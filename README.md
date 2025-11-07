@@ -1,5 +1,17 @@
 ## MCPI Demo — FastAPI + Celery + Redis (Monte Carlo π)
 
+### What is Monte Carlo Pi Estimation?
+
+The Monte Carlo method estimates π (pi) by using random sampling. Here's how it works:
+
+1. **Generate random points**: Create random points (x, y) in a unit square [0,1] × [0,1]
+2. **Count points inside**: Check if each point falls inside a quarter circle (where x² + y² ≤ 1)
+3. **Calculate π**: Estimate π using the ratio: **π ≈ 4 × (points inside / total points)**
+
+The more samples you use, the more accurate the estimate becomes. This demo uses distributed computing (Celery) to process millions of samples across multiple workers in parallel.
+
+---
+
 This is a minimal demo showing how to orchestrate background work with Celery and Redis, expose an HTTP API with FastAPI, and present results in a small web UI. The Monte Carlo method estimates π (pi) by sampling random points.
 
 ### Project Structure
